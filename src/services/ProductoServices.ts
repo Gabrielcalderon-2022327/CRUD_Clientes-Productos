@@ -2,6 +2,7 @@ import { Producto } from "../models/Producto";
 import { leerProductos } from "../utils/reader";
 import { escribirProductos } from "../utils/writer";
 import { Factura } from "../models/Factura";
+import { validarProducto } from "./validator";
 
 
 export async function listarProductos(): Promise<Producto[]> {
@@ -10,6 +11,7 @@ export async function listarProductos(): Promise<Producto[]> {
 }
 
 export async function agregarProducto(producto: Producto): Promise<void> {
+    validarProducto(producto);
     const productos: Producto[] = await leerProductos();
     productos.push(producto);
     await escribirProductos(productos);
@@ -35,7 +37,8 @@ export async function eliminarProducto(id: number): Promise<boolean> {
     return true;
 }
 
-export async function editarProducto(id: number, data: Partial<Producto>): Promise<boolean> {
+export async function editarProducto(id: number, producto: Producto): Promise<boolean> {
+    validarProducto(producto);
     const productos: Producto[] = await leerProductos();
     if (id <= 0) return false;
 
@@ -45,7 +48,7 @@ export async function editarProducto(id: number, data: Partial<Producto>): Promi
         return false;
     }
 
-    productos[index] = {...productos[index], ...data};
+    productos[index] = {...productos[index], ...producto};
     await escribirProductos(productos);
     return true;
 }
