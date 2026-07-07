@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "nombre": "Juan",
+        "apellido": "Pérez",
+        "telefono": 50255123456,
+        "edad": 28,
+        "dpi": 1234567890101,
+        "estado": "ACTIVO",
+        "categoria": "REGULAR"
+    },
+    {
+        "id": 2,
+        "nombre": "María",
+        "apellido": "López",
+        "telefono": 50256789012,
+        "edad": 35,
+        "dpi": 2345678901202,
+        "estado": "ACTIVO",
+        "categoria": "VIP"
+    },
+    {
+        "id": 3,
+        "nombre": "Carlos",
+        "apellido": "Ramírez",
+        "telefono": 50257890123,
+        "edad": 42,
+        "dpi": 3456789012303,
+        "estado": "INACTIVO",
+        "categoria": "MAYORISTA"
+    },
+    {
+        "id": 4,
+        "nombre": "Ana",
+        "apellido": "García",
+        "telefono": 50258901234,
+        "edad": 24,
+        "dpi": 4567890123404,
+        "estado": "ACTIVO",
+        "categoria": "REGULAR"
+    },
+    {
+        "id": 5,
+        "nombre": "Luis",
+        "apellido": "Morales",
+        "telefono": 50259012345,
+        "edad": 50,
+        "dpi": 5678901234505,
+        "estado": "INACTIVO",
+        "categoria": "VIP"
+    }
+]

@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "nombre": "Sofá Seccional Moderno",
+        "stock": 12,
+        "descripcion": "Sofá de 5 plazas con tapizado de tela gris.",
+        "categoria": "MUEBLES",
+        "estado": "EN_VENTA",
+        "precio": 4500,
+        "descuento": 10
+    },
+    {
+        "id": 2,
+        "nombre": "Refrigeradora Inverter 18P",
+        "stock": 8,
+        "descripcion": "Refrigeradora con tecnología inverter y ahorro energético.",
+        "categoria": "ELECTRODOMESTICOS",
+        "estado": "EN_VENTA",
+        "precio": 6200,
+        "descuento": 15
+    },
+    {
+        "id": 3,
+        "nombre": "Detergente Multiusos 2L",
+        "stock": 50,
+        "descripcion": "Producto de limpieza para pisos, baños y cocina.",
+        "categoria": "LIMPIEZA",
+        "estado": "EN_VENTA",
+        "precio": 35,
+        "descuento": 5
+    },
+    {
+        "id": 4,
+        "nombre": "Chaqueta Deportiva",
+        "stock": 20,
+        "descripcion": "Chaqueta ligera impermeable para uso diario.",
+        "categoria": "ROPA",
+        "estado": "DECONTINUADO",
+        "precio": 280,
+        "descuento": 25
+    },
+    {
+        "id": 5,
+        "nombre": "Laptop Gamer RTX 4060",
+        "stock": 5,
+        "descripcion": "Laptop de alto rendimiento para gaming y edición.",
+        "categoria": "TECNOLOGIA",
+        "estado": "BORRADOR",
+        "precio": 9800,
+        "descuento": 0
+    }
+]
