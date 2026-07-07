@@ -3,7 +3,7 @@ import { CategoriaCliente, EstadoCliente } from "./models/ClienteEnums";
 import { Producto } from "./models/Producto";
 import { Categoria, Estado } from "./models/ProductoEnums";
 import { agregarCliente, buscarCliente, editarCliente, eliminarCliente, listarClientes } from "./services/ClienteServices";
-import { agregarProductos, buscarProducto, calcularSubtotal, editarProducto, eliminarProducto, listarProductos } from "./services/ProductoServices";
+import { agregarProducto, buscarProducto, calcularSubtotal, editarProducto, eliminarProducto, listarProductos } from "./services/ProductoServices";
 import { rl } from "./utils/input";
 
 var idCount:number = 5;
@@ -69,7 +69,7 @@ async function menuClientes() {
                 categoria: categoriaCliente as CategoriaCliente
             }
 
-            agregarCliente(cliente);
+            await agregarCliente(cliente);
             console.log("Cliente agregado!")
             break;
         
@@ -93,7 +93,7 @@ async function menuClientes() {
                 estado: estado1 as EstadoCliente,
                 categoria: categoriaCliente1 as CategoriaCliente
             }
-            if (!editarCliente(idEditar, cliente1)){
+            if (!await editarCliente(idEditar, cliente1)){
                 console.log("El cliente no existe")
             } else {
                 console.log("Cliente editado!")
@@ -101,7 +101,7 @@ async function menuClientes() {
             break;
         case "3":
             let idEliminar =  Number(await rl.question("Ingrese ID: "));
-            if (!eliminarCliente(idEliminar)){
+            if (!await eliminarCliente(idEliminar)){
                 console.log("El cliente no existe")
             } else {
                 console.log("Cliente eliminado!")
@@ -109,10 +109,10 @@ async function menuClientes() {
             break;
         case "4":
             let idBuscar =  Number(await rl.question("Ingrese ID: "));
-            console.log(buscarCliente(idBuscar));
+            console.log(await buscarCliente(idBuscar));
             break;
         case "5":
-            console.log(listarClientes());
+            console.log(await listarClientes());
             break;
     }
 }
@@ -153,7 +153,7 @@ async function menuProductos() {
                 descuento: descuento
             }
 
-            agregarProductos(producto);
+            await agregarProducto(producto);
             console.log("Producto agregado!")
             break;
         
@@ -177,7 +177,7 @@ async function menuProductos() {
                 precio: precio1,
                 descuento: descuento1
             }
-            if (!editarProducto(idEditar, producto1)){
+            if (!await editarProducto(idEditar, producto1)){
                 console.log("El producto no existe")
             } else {
                 console.log("Producto editado!")
@@ -185,7 +185,7 @@ async function menuProductos() {
             break;
         case "3":
             let idEliminar =  Number(await rl.question("Ingrese ID: "));
-            if (!eliminarProducto(idEliminar)){
+            if (!await eliminarProducto(idEliminar)){
                 console.log("El producto no existe")
             } else {
                 console.log("Producto eliminado!")
@@ -193,10 +193,10 @@ async function menuProductos() {
             break;
         case "4":
             let idBuscar =  Number(await rl.question("Ingrese ID: "));
-            console.log(buscarProducto(idBuscar));
+            console.log(await buscarProducto(idBuscar));
             break;
         case "5":
-            console.log(listarProductos());
+            console.log(await listarProductos());
             break;
         case "6":
             console.log("LISTA DE CATEGORIAS: ")
@@ -204,7 +204,7 @@ async function menuProductos() {
             break;
         case "7":
             let idCalculo = Number(await rl.question("Ingrese ID del producto deseado: "))
-            console.log(calcularSubtotal(idCalculo));
+            console.log(await calcularSubtotal(idCalculo));
     }
 }
 
