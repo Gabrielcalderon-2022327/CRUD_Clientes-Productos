@@ -1,19 +1,26 @@
 import { Cliente } from "../models/Cliente";
-import { clientes } from "../data/Clientes";
+import { leerClientes } from "../utils/reader";
+import { escribirClientes } from "../utils/writer";
 
-export function listarClientes(): Cliente[] {
+
+export async function listarClientes(): Promise<Cliente[]> {
+    const clientes: Cliente[] = await leerClientes();
     return clientes;
 }
 
-export function agregarCliente(cliente: Cliente): void {
+export async function agregarCliente(cliente: Cliente): Promise<void> {
+    const clientes: Cliente[] = await leerClientes();
     clientes.push(cliente);
+    await escribirClientes(clientes);
 }
 
-export function buscarCliente(id: number): Cliente | null{
+export async function buscarCliente(id: number): Promise<Cliente | null> {
+    const clientes: Cliente[] = await leerClientes();
     return clientes.find(c => c.id === id) || null;
 }
 
-export function eliminarCliente(id: number): boolean{
+export async function eliminarCliente(id: number): Promise<boolean> {
+    const clientes: Cliente[] = await leerClientes();
     if (id <= 0) return false;
     const index = clientes.findIndex(c => c.id === id);
     
@@ -21,11 +28,13 @@ export function eliminarCliente(id: number): boolean{
         return false;
     }
     clientes.splice(index, 1);
+    await escribirClientes(clientes);
     return true;
 }
 
 
-export function editarCliente(id: number, data: Partial<Cliente>): boolean{
+export async function editarCliente(id: number, data: Partial<Cliente>): Promise<boolean>{
+    const clientes: Cliente[] = await leerClientes();
     if (id <= 0) return false;
 
     const index = clientes.findIndex(c => c.id === id);
@@ -34,5 +43,6 @@ export function editarCliente(id: number, data: Partial<Cliente>): boolean{
     }
 
     clientes[index] = { ...clientes[index], ...data };
+    await escribirClientes(clientes);
     return true;
 }
