@@ -1,21 +1,27 @@
 import { Producto } from "../models/Producto";
-import { productos } from "../data/Productos";
+import { leerProductos } from "../utils/reader";
+import { escribirProductos } from "../utils/writer";
 import { Factura } from "../models/Factura";
 
 
-export function listarProductos(): Producto[] {
+export async function listarProductos(): Promise<Producto[]> {
+    const productos: Producto[] = await leerProductos();
     return productos;
 }
 
-export function agregarProductos(producto: Producto): void {
+export async function agregarProducto(producto: Producto): Promise<void> {
+    const productos: Producto[] = await leerProductos();
     productos.push(producto);
+    await escribirProductos(productos);
 }
 
-export function buscarProducto(id: number): Producto | null{
+export async function buscarProducto(id: number): Promise<Producto | null> {
+    const productos: Producto[] = await leerProductos();
     return productos.find(p => p.id === id) || null;
 }
 
-export function eliminarProducto(id: number): boolean {
+export async function eliminarProducto(id: number): Promise<boolean> {
+    const productos: Producto[] = await leerProductos();
     if (id <= 0) return false;
 
     const index = productos.findIndex(p => p.id === id);
@@ -25,10 +31,12 @@ export function eliminarProducto(id: number): boolean {
     }
 
     productos.splice(index,1);
+    await escribirProductos(productos);
     return true;
 }
 
-export function editarProducto(id: number, data: Partial<Producto>): boolean {
+export async function editarProducto(id: number, data: Partial<Producto>): Promise<boolean> {
+    const productos: Producto[] = await leerProductos();
     if (id <= 0) return false;
 
     const index = productos.findIndex(p => p.id === id);
@@ -38,12 +46,12 @@ export function editarProducto(id: number, data: Partial<Producto>): boolean {
     }
 
     productos[index] = {...productos[index], ...data};
+    await escribirProductos(productos);
     return true;
 }
 
-export function calcularSubtotal(id: number) {
-    const producto = buscarProducto(id);
-
+export async function calcularSubtotal(id: number) {
+    const producto = await buscarProducto(id);
     if (producto === null) {
         return null;
     }
