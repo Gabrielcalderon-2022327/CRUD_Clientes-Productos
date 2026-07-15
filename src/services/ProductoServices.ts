@@ -1,6 +1,5 @@
 import { Producto } from "../models/Producto";
-import { leerProductos } from "../utils/reader";
-import { escribirProductos } from "../utils/writer";
+import { leerProductos, escribirProductos } from "../data/ProductosRepository";
 import { Factura } from "../models/Factura";
 import { validarProducto } from "./validator";
 

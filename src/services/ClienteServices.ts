@@ -1,6 +1,5 @@
 import { Cliente } from "../models/Cliente";
-import { leerClientes } from "../utils/reader";
-import { escribirClientes } from "../utils/writer";
+import { leerClientes, escribirClientes } from "../data/ClientesRepository";
 import { validarCliente } from "./validator";
 
 
