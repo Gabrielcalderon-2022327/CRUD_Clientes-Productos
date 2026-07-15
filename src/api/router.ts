@@ -29,6 +29,7 @@ function handleException(res: http.ServerResponse, error: unknown): void {
 }
 
 export async function router(req: http.IncomingMessage, res: http.ServerResponse): Promise<void> {
+    const init = performance.now();
     const method = req.method ?? '';
     const url = new URL(req.url ?? '/', 'http://localhost').pathname;
 
@@ -124,8 +125,11 @@ export async function router(req: http.IncomingMessage, res: http.ServerResponse
                 return;
             }
         }
-
+        sendJSON(res, 404, { error: 'Ruta no encontrada', url, method })
     } catch (error) {
         handleException(res, error);
+    } finally {
+        const ms = Math.round(performance.now() - init);
+        console.log(`${method} ${url} TIEMPO: ${res.statusCode} (${ms} ms)`);
     }
 }
