@@ -1,6 +1,13 @@
 import { Cliente } from "../models/Cliente";
 import { Producto } from "../models/Producto";
 
+export class ValidacionError extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = 'ValidacionError';
+    }
+}
+
 export function validarCliente(cliente: Cliente): void {
 
     if (!cliente.nombre.trim()) {
@@ -8,33 +15,33 @@ export function validarCliente(cliente: Cliente): void {
     }
 
     if (!cliente.apellido.trim()) {
-        throw new Error("El apellido es obligatorio.");
+        throw new ValidacionError("El apellido es obligatorio.");
     }
 
     if (cliente.edad <= 0) {
-        throw new Error("La edad debe ser mayor que cero.");
+        throw new ValidacionError("La edad debe ser mayor que cero.");
     }
 
     if (typeof cliente.telefono !== "number") {
-        throw new Error("El teléfono debe ser numérico.");
+        throw new ValidacionError("El teléfono debe ser numérico.");
     }
 
     if (typeof cliente.dpi !== "number") {
-        throw new Error("El DPI debe ser numérico.");
+        throw new ValidacionError("El DPI debe ser numérico.");
     }
 }
 
 export function validarProducto(producto: Producto): void {
 
     if (!producto.nombre.trim()) {
-        throw new Error("El nombre es obligatorio.");
+        throw new ValidacionError("El nombre es obligatorio.");
     }
 
     if (producto.precio <= 0) {
-        throw new Error("El precio debe ser mayor que cero.");
+        throw new ValidacionError("El precio debe ser mayor que cero.");
     }
 
     if (producto.stock < 0) {
-        throw new Error("El stock no puede ser negativo.");
+        throw new ValidacionError("El stock no puede ser negativo.");
     }
 }
