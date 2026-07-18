@@ -27,6 +27,7 @@ async function menu() {
                 break;
             case "3":
                 console.log("Feliz día :)");
+                rl.close();
                 break;
         }
     } while (opcion != "3");
@@ -206,7 +207,7 @@ async function menuProductos() {
 }
 
 async function main() {
-    await iniciarServer();   
-    await menu();                 
+    await iniciarServer(); 
+    await menu();            
 }
 main();

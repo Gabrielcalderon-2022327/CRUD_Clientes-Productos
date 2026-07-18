@@ -3,7 +3,7 @@ import { router } from "./router";
 const PORT = 3000;
 
 
-export function iniciarServer(): void {
+export async function iniciarServer(): Promise<void> {
     const server = createServer(async (req, res) => {
         try {
             await router(req, res);
@@ -15,7 +15,7 @@ export function iniciarServer(): void {
     });
 
     server.listen(PORT, () => {
-        console.log("--------------------------------");
+        console.log("\n--------------------------------");
         console.log("SERVER INCIADO");
         console.log(`PUERTO: ${PORT}`);
         console.log("URL: http://localhost:" + PORT);
