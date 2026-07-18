@@ -209,4 +209,4 @@ async function main() {
     await iniciarServer();   
     await menu();                 
 }
-menu();
+main();
