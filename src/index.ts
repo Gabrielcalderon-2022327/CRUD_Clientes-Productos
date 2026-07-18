@@ -1,3 +1,4 @@
+import { iniciarServer } from "./api/server";
 import { Cliente } from "./models/Cliente";
 import { CategoriaCliente, EstadoCliente } from "./models/ClienteEnums";
 import { Producto } from "./models/Producto";
@@ -204,4 +205,8 @@ async function menuProductos() {
     }
 }
 
+async function main() {
+    await iniciarServer();   
+    await menu();                 
+}
 menu();
