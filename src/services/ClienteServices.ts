@@ -11,6 +11,7 @@ export async function listarClientes(): Promise<Cliente[]> {
 export async function agregarCliente(cliente: Cliente): Promise<void> {
     validarCliente(cliente);
     const clientes: Cliente[] = await leerClientes();
+    cliente.id = clientes.length + 1;
     clientes.push(cliente);
     await escribirClientes(clientes);
 }

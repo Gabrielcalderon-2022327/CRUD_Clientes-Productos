@@ -6,8 +6,6 @@ import { agregarCliente, buscarCliente, editarCliente, eliminarCliente, listarCl
 import { agregarProducto, buscarProducto, calcularSubtotal, editarProducto, eliminarProducto, listarProductos } from "./services/ProductoServices";
 import { rl } from "./utils/input";
 
-var idCount:number = 5;
-var idCount2:number = 5;
 
 async function menu() {
     let opcion = "";    
@@ -57,9 +55,8 @@ async function menuClientes() {
             let estado =  await rl.question( "Ingrese estado (Activo/Inactivo): ");
             let categoriaCliente = await rl.question("Ingrese categoria (Regular/Vip/Mayorista): ");
 
-            idCount ++;
             let cliente: Cliente = {
-                id: idCount,
+                id: 0,
                 nombre: nombre,
                 apellido: apellido,
                 telefono: telefono,
@@ -141,9 +138,8 @@ async function menuProductos() {
             let precio = Number(await rl.question("Ingrese precio: "));
             let descuento = Number(await rl.question("Ingrese descuento (0 si no quiere descuento): "))
 
-            idCount2 ++;
             let producto: Producto = {
-                id: idCount2,
+                id: 0,
                 nombre: nombre,
                 stock: stock,
                 descripcion: descripcion,
@@ -168,7 +164,7 @@ async function menuProductos() {
             let descuento1 = Number(await rl.question("Ingrese descuento (0 si no quiere descuento): "))
 
             let producto1: Producto = {
-                id: idCount2,
+                id: idEditar,
                 nombre: nombre1,
                 stock: stock1,
                 descripcion: descripcion1,

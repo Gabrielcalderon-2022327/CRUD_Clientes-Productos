@@ -12,6 +12,7 @@ export async function listarProductos(): Promise<Producto[]> {
 export async function agregarProducto(producto: Producto): Promise<void> {
     validarProducto(producto);
     const productos: Producto[] = await leerProductos();
+    producto.id = productos.length + 1;
     productos.push(producto);
     await escribirProductos(productos);
 }
